@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Q&A - SU GPT</title>
+    
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+
+    <style>
+        /* Make the chat box scrollable */
+        .chat-box {
+            max-height: 400px;
+            overflow-y: auto;
+            margin-bottom: 60px; /* Space for the input form */
+        }
+
+        /* Make the chat form fixed at the bottom */
+        .chat-form-container {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            max-width: 600px;
+            background-color: #00000000;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Styling for the input form */
+        .chat-form-container input,
+        .chat-form-container button {
+            border-radius: 50px;
+        }
+
+        .chat-form-container .btn {
+            margin-left: 10px;
+        }
+
+        /* Optional: Style the scroll-to-bottom button */
+        #scrollToBottom {
+            position: absolute;
+            bottom: 90px; /* Above the input form */
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .faq-item {
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% if not messages %}
+            <!-- Show tagline and FAQ only when there are no messages -->
+            <h1 class="text-center">SU - GPT: Your Virtual Assistant</h1>
+
+            <section class="my-4">
+                <p class="lead text-center">Welcome to SU GPT! Ask questions about the university, courses, grades, and more.</p>
+            </section>
+
+            <div class="faq-carousel my-5">
+                <h2>Frequently Asked Questions</h2>
+                <div class="faq-items">
+                    <div class="faq-item">
+                        <strong>How can I register for courses?</strong>
+                        <p>To register for courses, log in to the student portal and select 'Course Registration' from the menu.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>What are the university's office hours?</strong>
+                        <p>The university office is open Monday to Friday from 9 AM to 5 PM.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>How can I access my grades?</strong>
+                        <p>Your grades are available through the student portal under the 'Grades' section.</p>
+                    </div>
+                    <div class="faq-item">
+                        <strong>Who should I contact for technical support?</strong>
+                        <p>Contact our IT support team at techsupport@su.edu or call (123) 456-7890.</p>
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- Chat Box Section -->
+        <section class="chat-box-section my-5">
+            <div class="chat-box">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="message {{ message.type }}">
+                            <p>{{ message.text }}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </section>
+
+        <!-- Scroll to Bottom Button -->
+        <div class="text-center my-4">
+            <button id="scrollToBottom" class="btn btn-secondary rounded-pill">
+                <i class="bi bi-arrow-down"></i>
+            </button>
+        </div>
+
+        <!-- Fixed Input Form -->
+        <div class="chat-form-container">
+            <form id="chat-form" method="POST" class="d-flex">
+                <input type="text" name="user_input" id="user_input" class="form-control" placeholder="Enter your question" autocomplete="off">
+                <button type="submit" class="btn btn-secondary">Send</button>
+                <button type="submit" name="reset" value="true" class="btn btn-danger">Reset</button>
+            </form>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="/static/script.js"></script>
+
+    <script>
+        // Scroll to bottom function for the chat box
+        document.getElementById("scrollToBottom").addEventListener("click", function() {
+            var chatBox = document.querySelector(".chat-box");
+            chatBox.scrollTop = chatBox.scrollHeight; // Scroll to the bottom of the chat box
+        });
+
+        // Automatically scroll to the bottom when a new message is added
+        const chatBox = document.querySelector('.chat-box');
+        chatBox.scrollTop = chatBox.scrollHeight; // Initially scroll to the bottom
+
+        // Optionally, if new messages are dynamically added, you could implement this logic:
+        // chatBox.scrollTop = chatBox.scrollHeight;
+    </script>
+</body>
+</html>

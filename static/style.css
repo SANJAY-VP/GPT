@@ -1,0 +1,114 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000; /* Black background */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    color: #ddd; /* Light grey text color */
+}
+
+.container {
+    max-width: 700px;
+    width: 100%;
+    background-color: #121212; /* Black secondary color */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+    color: #ddd; /* Light grey */
+}
+
+h1 {
+    color: #ffffff; /* White for title */
+}
+
+/* FAQ Carousel */
+.faq-carousel {
+    background-color: #1a1a1a; /* Slightly lighter black */
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    color: #ddd;
+}
+
+.carousel-item {
+    padding: 10px;
+    background-color: #333333; /* Grey tertiary color */
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+/* Chat Box */
+.chat-box {
+    height: auto;
+    border: 1px solid #444;
+    padding: 10px;
+    background-color: #1a1a1a; /* Slightly lighter black */
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    padding: 10px 15px;
+    border-radius: 20px;
+    max-width: 75%; /* Fix chat bubble width */
+    animation: fadeIn 0.5s ease-in-out; /* Fade-in animation */
+    margin-bottom: 10px;
+}
+
+.message.question {
+    background-color: #333333; /* Grey for user input */
+    color: white;
+    align-self: flex-end; /* Align to the right */
+    text-align: right;
+}
+
+.message.answer {
+    background-color: #212121; /* Dark grey for chatbot responses */
+    color: #ddd;
+    align-self: flex-start; /* Align to the left */
+    text-align: left;
+}
+
+/* Input Form */
+#user_input {
+    flex: 1;
+    padding: 15px;
+    border: 1px solid #444;
+    border-radius: 50px; /* More rounded, oval shape */
+    background-color: #1a1a1a;
+    color: #ddd;
+    outline: none;
+}
+
+button {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px; /* Oval shape */
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #444444; /* Lighter grey */
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
