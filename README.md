@@ -64,6 +64,7 @@ This project is a **Flask-based Chatbot** that leverages **Sentence Transformers
 This project is for educational and internal use only.
 
 ## Contribution
-Manu Pal — https://github.com/MANUPAL4321
-Sanjay — sanjayvp08@gmail.com
+- Manu Pal — https://github.com/MANUPAL4321
+- Sanjay — sanjayvp08@gmail.com
+
 If you find ways to improve this bot, kindly open a PR or raise an issue. All contributions are highly valued.
